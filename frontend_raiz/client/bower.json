@@ -1,0 +1,20 @@
+{
+  "name": "embracon hack frontend",
+  "homepage": "https://github.com/enoqueleal/hackathon-embracon-front",
+  "authors": [
+    "Juliovaz <julio.oliveiravaz0@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "popper.js": "^1.15.0"
+  }
+}

@@ -7,32 +7,75 @@
     <title>Harry poup - EMBRACOM</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/libs/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/>
+    <!-- <link rel="stylesheet" href="assets/libs/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/libs/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/libs/css/owl.theme.green.min.css"> -->
 </head>
 <body>
     <section class="main">
         <!-- menu -->
         <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-            <a href="#">Teste</a>
+            <div class="sidenav-avatar">
+                <div class="sidenav-avatar_temporary"></div>
+                <!-- <img src="" alt=""> -->
+            </div>
+            <div class="sidenav-name">
+                Lorem ipsum
+            </div>
+            <div class="sidenav-certificates">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div id="certificates">
+                                <div><div class="item item-certificates"></div></div>
+                                <div><div class="item item-certificates"></div></div>
+                                <div><div class="item item-certificates"></div></div>
+                                <div><div class="item item-certificates"></div></div>
+                                <div><div class="item item-certificates"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sidenav-menu">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#">Perfil</a>
+                <a href="#">Consórcios<small class="text-muted">especiais</small> </a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+                <a href="#">Teste</a>
+            </div>
         </div>
         <!-- content -->
         <div id="main-content">
             <div class="container">
                 <div class="row">
                     <div class="col col-md-12 col-sm-12 col-xs-12">
-                        <h2>Sidenav Push Example</h2>
-                        <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
                         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-                        </div>x
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div id="slick-images">
+                            <div><h1>teste</h1></div>
+                            <div><h1>teste</h1></div>
+                            <div><h1>teste</h1></div>
+                            <div><h1>teste</h1></div>
+                            <div><h1>teste</h1></div>
+                        </div>
                     </div>
                 </div>
             </div>
     </section>
     <!-- scripts -->
+    <script src="assets/libs/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/libs/js/popper.min.js"></script>
+    <script src="assets/libs/js/bootstrap.min.js"></script>
+    <script src="assets/libs/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script>
         function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
@@ -43,6 +86,41 @@
         document.getElementById("mySidenav").style.width = "0";
         document.getElementById("main").style.marginLeft= "0";
         }
+    </script>
+    <script>
+        $('#certificates').slick({
+            infinite: false,
+            arrows: false,
+            autoplay: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [
+                {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll:4,
+                    infinite: true,
+                    dots: true
+                }
+                },
+                {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll:4
+                }
+                },
+                {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll:4
+                }
+                }
+            ]
+            });
     </script>
 </body>
 </html>
