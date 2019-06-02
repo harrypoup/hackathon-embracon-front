@@ -25,6 +25,7 @@ import Slide from '@material-ui/core/Slide';
 import Dream from './Dream';
 import TimeLine from './TimeLine';
 import AvatarWrapper from './AvatarWrapper';
+import DadosPerfil from './DadosPerfil';
 
 
 const useStyles = makeStyles({
@@ -84,7 +85,7 @@ function Wrapper(props) {
         </ListItem>
         <ListItem disabled>
             <ListItemIcon><AttachMoney /></ListItemIcon>
-            <ListItemText primary={'Consórcio especia'} />
+            <ListItemText primary={'Consórcio especial'} />
         </ListItem>
         </List>
       <Divider />
@@ -119,12 +120,22 @@ function Wrapper(props) {
                 }}> &#9776; </Button>
             </HideOnScroll>
         </div>
-        <Container maxWidth="sm">
-            <Dream/>
-            <TimeLine/>
-        </Container>
+        <div class="home-content">
+            <Container maxWidth="sm">
+                {/* <Dream/>
+                <TimeLine/> */}
+                <DadosPerfil/>
+            </Container>
+        </div>
+        <div class="perfil-content" style={{display: 'none'}}>
+            <Container maxWidth="sm">
+                {/* <Dream/> */}
+                {/* <TimeLine/> */}
+            </Container>
+        </div>
         <SwipeableDrawer
         open={state.left}
+        disableSwipeToOpen={false}
         onClose={toggleDrawer('left', false)}
         onOpen={toggleDrawer('left', true)}
         >
