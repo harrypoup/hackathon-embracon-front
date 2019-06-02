@@ -12,10 +12,6 @@ class Login extends Component{
         error: ''
     }
 
-    // responseProfile = usuario => {
-    //     this.props.usuarioApp(usuario);
-    // }
-
     handleSubmit = async (e) => {
         e.preventDefault();
         const {usuario,senha} = this.state;
@@ -26,24 +22,20 @@ class Login extends Component{
                 let formData = new FormData();
                 formData.append('usuario', usuario);
                 formData.append('senha', senha);
-                // const response = await api.post("/login", formData);
-                // console.log(response);
-                let term = localStorage.getItem('contrato');
-                setTimeout(()=>{
-                    if(term){
-                        this.props.history.push("/app");
-                    }else{
-                        this.props.history.push("/termo");
-                    }
-                }, 150);
-                // if(!response){
-                //     // this.responseProfile(response.data.data);
-                //     setTimeout(()=>{
-                //         this.props.history.push("/app");
-                //     }, 150);
-                // }else{
-                //     this.setState({error: "Login e senha não localizados"});
-                // }
+                const response = await api.post("/auth", formData);
+                console.log(response);
+                if(response){
+                    let term = localStorage.getItem('contrato');
+                    setTimeout(()=>{
+                        if(term){
+                            this.props.history.push("/app");
+                        }else{
+                            this.props.history.push("/termo");
+                        }
+                    }, 150);
+                }else{
+                    this.setState({error: "Login e senha não localizados"});
+                }
             }catch(err){
                 this.setState({error: "Houve um problema com o login, verifique suas credenciais"});
             }

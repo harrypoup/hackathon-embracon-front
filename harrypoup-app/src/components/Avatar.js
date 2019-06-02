@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import casa from '../assets/img/casa.png';
 
 const useStyles = makeStyles({
   avatar: {
@@ -21,7 +22,7 @@ function AvatarDream() {
   return (
     <Grid container>
         <Grid item xs={4} xl={2} md={2}>
-            <Avatar alt="Remy Sharp" src="https://cdn.icon-icons.com/icons2/370/PNG/512/Home3_37171.png" className={classes.bigAvatar} />
+            <Avatar alt="Remy Sharp" src={casa} className={classes.bigAvatar} />
         </Grid>
         <Grid item xs={8} xl={8} md={8}>
             <Typography variant="h5" component="h3">
