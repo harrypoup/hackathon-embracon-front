@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import * as Actions from '../actions/app';
 import { connect } from 'react-redux';
 import {api} from '../services/api';
+import logo from '../assets/img/logo.jpeg';
 
 class Login extends Component{
     state = {
@@ -18,18 +19,22 @@ class Login extends Component{
     handleSubmit = async (e) => {
         e.preventDefault();
         const {usuario,senha} = this.state;
-        console.log(usuario,senha);
         if(!usuario || !senha){
             this.setState({error: "Preencha os campos com seu login e senha para logar"});
         }else{
             try{
-                var formData = new FormData();
+                let formData = new FormData();
                 formData.append('usuario', usuario);
                 formData.append('senha', senha);
                 // const response = await api.post("/login", formData);
                 // console.log(response);
+                let term = localStorage.getItem('contrato');
                 setTimeout(()=>{
-                    this.props.history.push("/app");
+                    if(term){
+                        this.props.history.push("/app");
+                    }else{
+                        this.props.history.push("/termo");
+                    }
                 }, 150);
                 // if(!response){
                 //     // this.responseProfile(response.data.data);
@@ -48,13 +53,13 @@ class Login extends Component{
     render(){
         return(
             <React.Fragment>
-                <div className="container">
+                <div className="container" style={{marginTop: 50}}>
                     <div className="row justify-content-md-center">
                         <div className="col col-md-4 col-sm-12 col-xs-12">
                             <form className="form-signin">
                                 <div className="text-center mb-4">
-                                    <img className="mb-4" src="assets/img/circle.png" alt="logo" width="72" height="72"/>
-                                    <h1 className="h3 mb-3 font-weight-normal">Login</h1>
+                                    <img className="mb-4" src={logo} alt="logo" width="72" height="72"/>
+                                    <h1 className="h3 mb-3 font-weight-normal">Harry Poup</h1>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="usuario">Usuário</label>
@@ -74,13 +79,7 @@ class Login extends Component{
                                     onChange={e => this.setState({ senha: e.target.value })}
                                     />
                                 </div>
-                                <div className="checkbox mb-3">
-                                    <label>
-                                        <input type="checkbox" value="remember-me"/> Remember me
-                                    </label>
-                                </div>
-                                <button className="btn btn-lg btn-primary btn-block" type="submit" onClick={this.handleSubmit}>Sign in</button>
-                                <p className="mt-5 mb-3 text-muted text-center"><a href="#">Registre-se</a></p>
+                                <button className="btn btn-lg btn-primary btn-block" type="submit" onClick={this.handleSubmit}>Acessar</button>
                             </form>
                         </div>
                     </div>

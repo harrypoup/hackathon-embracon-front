@@ -85,6 +85,8 @@ function Wrapper(props) {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
+        
+
     <AvatarWrapper/>
       <List>
         <Link to={`/app`} activeclassname="active">
@@ -99,9 +101,14 @@ function Wrapper(props) {
                 <ListItemText primary={'Perfil'} />
             </ListItem>
         </Link>
-        <ListItem disabled>
-            <ListItemIcon><AttachMoney /></ListItemIcon>
-            <ListItemText primary={'Consórcio especial'} />
+        <ListItem>
+        <a href='https://www.upconsorcio.com.br/'>
+            <div className="pulse-wrapper">
+                <button className="pulse-button">Consórcios especiais</button>
+            </div>
+        </a>
+            {/* <ListItemIcon><AttachMoney /></ListItemIcon>
+            <ListItemText primary={'Consórcio especial'} /> */}
         </ListItem>
         </List>
       <Divider />
@@ -112,10 +119,12 @@ function Wrapper(props) {
             <ListItemText primary={'Central de ajuda'}></ListItemText>
           </ListItem>
         </Link>
-        <ListItem>
-            <ListItemIcon><ExitToApp /></ListItemIcon>
-            <ListItemText primary={'Sair'}></ListItemText>
-        </ListItem>
+        <Link to={`/`} activeclassname="active">
+            <ListItem>
+                <ListItemIcon><ExitToApp /></ListItemIcon>
+                <ListItemText primary={'Sair'}></ListItemText>
+            </ListItem>
+        </Link>
       </List>
     </div>
   );

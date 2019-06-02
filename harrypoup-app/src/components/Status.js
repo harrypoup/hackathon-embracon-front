@@ -37,7 +37,7 @@ function CustomizedProgressBars() {
         className={classes.margin}
         variant="determinate"
         color="secondary"
-        value={50}
+        value={10}
       />
     </div>
   );
