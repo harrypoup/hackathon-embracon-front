@@ -11,13 +11,14 @@ class Login extends Component{
         error: ''
     }
 
-    responseProfile = usuario => {
-        this.props.usuarioApp(usuario);
-    }
+    // responseProfile = usuario => {
+    //     this.props.usuarioApp(usuario);
+    // }
 
     handleSubmit = async (e) => {
         e.preventDefault();
         const {usuario,senha} = this.state;
+        console.log(usuario,senha);
         if(!usuario || !senha){
             this.setState({error: "Preencha os campos com seu login e senha para logar"});
         }else{
@@ -25,16 +26,19 @@ class Login extends Component{
                 var formData = new FormData();
                 formData.append('usuario', usuario);
                 formData.append('senha', senha);
-                const response = await api.post("/login", formData);
-                console.log(response);
-                if(response){
-                    this.responseProfile(response.data.data);
-                    setTimeout(()=>{
-                        this.props.history.push("/app");
-                    }, 150);
-                }else{
-                    this.setState({error: "Login e senha não localizados"});
-                }
+                // const response = await api.post("/login", formData);
+                // console.log(response);
+                setTimeout(()=>{
+                    this.props.history.push("/app");
+                }, 150);
+                // if(!response){
+                //     // this.responseProfile(response.data.data);
+                //     setTimeout(()=>{
+                //         this.props.history.push("/app");
+                //     }, 150);
+                // }else{
+                //     this.setState({error: "Login e senha não localizados"});
+                // }
             }catch(err){
                 this.setState({error: "Houve um problema com o login, verifique suas credenciais"});
             }
@@ -47,21 +51,21 @@ class Login extends Component{
                 <div className="container">
                     <div className="row justify-content-md-center">
                         <div className="col col-md-4 col-sm-12 col-xs-12">
-                            <form className="form-signin" action="">
+                            <form className="form-signin">
                                 <div className="text-center mb-4">
                                     <img className="mb-4" src="assets/img/circle.png" alt="logo" width="72" height="72"/>
                                     <h1 className="h3 mb-3 font-weight-normal">Login</h1>
                                 </div>
                                 <div className="form-group">
-                                    <label for="usuario">Usuário</label>
-                                    <input type="tex"
+                                    <label htmlFor="usuario">Usuário</label>
+                                    <input type="text"
                                     onChange={e => this.setState({ usuario: e.target.value })}
                                     className="form-control"
                                     id="usuario"
                                     placeholder="CFP ou E-mail"/>
                                 </div>
                                 <div className="form-group">
-                                    <label for="senha">Senha</label>
+                                    <label htmlFor="senha">Senha</label>
                                     <input
                                     type="password"
                                     className="form-control"
@@ -75,7 +79,7 @@ class Login extends Component{
                                         <input type="checkbox" value="remember-me"/> Remember me
                                     </label>
                                 </div>
-                                <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                                <button className="btn btn-lg btn-primary btn-block" type="submit" onClick={this.handleSubmit}>Sign in</button>
                                 <p className="mt-5 mb-3 text-muted text-center"><a href="#">Registre-se</a></p>
                             </form>
                         </div>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Login from './components/Login';
+import Wrapper from './components/Wrapper';
 import {isAuthenticated} from './services/auth.js';
 
 
@@ -24,7 +25,7 @@ const Routes = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Login}/>
-            {/* todo routes */}
+            <PrivateRoute path="/app" component={Wrapper}/>
         </Switch>
     </BrowserRouter>
 );

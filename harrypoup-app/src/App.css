@@ -31,3 +31,17 @@
     transform: rotate(360deg);
   }
 }
+
+.align-components_navbar{
+  width: 100%;
+  display: inline;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.MuiAppBar-root{
+  width: auto!important;
+}
+
+.MuiPaper-elevation4{
+  box-shadow: none!important;
+}
