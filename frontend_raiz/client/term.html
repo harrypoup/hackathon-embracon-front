@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="form-group">
+      <label for="license" class="font-weight-bold">Termo de aceite</label>
+
+      <textarea name="license" id="license" class="form-control" rows="5" cols="100" onchange="enableBtn()">
+Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took 
+a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 
+1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop 
+publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text 
+of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 
+the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially 
+unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </textarea>
+
+      <br>
+
+      <button type="button" class="btn btn-primary" id="accept" disabled>Aceitar</button>
+      <a href="login.html" class="btn btn-danger">Declinar</a>
+
+    </div>
+  </div>
+
+  <script src="js/index.js"></script>
+  <script>
+
+    $('textarea#license').on('scroll', function () {
+      var btnAccept = document.getElementById("accept");
+      var offset = 200;
+
+      if (this.scrollHeight <= (this.scrollTop + offset)) {
+        btnAccept.disabled = false;
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>
