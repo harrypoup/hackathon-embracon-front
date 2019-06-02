@@ -12,7 +12,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import Navbar from './Navbar';
+import Person from '@material-ui/icons/Person';
+import AttachMoney from '@material-ui/icons/AttachMoney';
+import Help from '@material-ui/icons/Help';
+import ExitToApp from '@material-ui/icons/ExitToApp';
 
 
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -21,6 +24,7 @@ import Box from '@material-ui/core/Box';
 import Slide from '@material-ui/core/Slide';
 import Dream from './Dream';
 import TimeLine from './TimeLine';
+import AvatarWrapper from './AvatarWrapper';
 
 
 const useStyles = makeStyles({
@@ -72,19 +76,22 @@ function Wrapper(props) {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
+    <AvatarWrapper/>
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+        <ListItem button key={() => Math.random()}>
+            <ListItemIcon><Person /></ListItemIcon>
+            <ListItemText primary={'Perfil'} />
+        </ListItem>
+        <ListItem disabled>
+            <ListItemIcon><AttachMoney /></ListItemIcon>
+            <ListItemText primary={'Consórcio especia'} />
+        </ListItem>
+        </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['Central de ajuda', 'Sair'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>{index % 2 === 0 ? <Help /> : <ExitToApp disabled/>}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -95,7 +102,7 @@ function Wrapper(props) {
 
   return (
     <div>
-        <Container maxWidth="sm"></Container>
+        
         <div className="align-components_navbar">
             <HideOnScroll {...props}>
                 <Button onClick={toggleDrawer('left', true)}
@@ -112,8 +119,10 @@ function Wrapper(props) {
                 }}> &#9776; </Button>
             </HideOnScroll>
         </div>
-        <Dream/>
-        <TimeLine/>
+        <Container maxWidth="sm">
+            <Dream/>
+            <TimeLine/>
+        </Container>
         <SwipeableDrawer
         open={state.left}
         onClose={toggleDrawer('left', false)}
