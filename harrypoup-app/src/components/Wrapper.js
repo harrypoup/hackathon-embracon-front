@@ -17,6 +17,8 @@ import AttachMoney from '@material-ui/icons/AttachMoney';
 import Help from '@material-ui/icons/Help';
 import ExitToApp from '@material-ui/icons/ExitToApp';
 
+import {Link} from 'react-router-dom';
+
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -54,23 +56,27 @@ HideOnScroll.propTypes = {
   };
 
 function Wrapper(props) {
-  const classes = useStyles();
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
+    const classes = useStyles();
+    const [perfis] = React.useState({
+        perfilcontent: true
+    });
+    const [state, setState] = React.useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+        perfilcontent: true
+    });
+
 
   const toggleDrawer = (side, open) => event => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
     setState({ ...state, [side]: open });
   };
 
-  const sideList = side => (
+  const sideList = (side) => (
     <div
       className={classes.list}
       role="presentation"
@@ -81,7 +87,8 @@ function Wrapper(props) {
       <List>
         <ListItem button key={() => Math.random()}>
             <ListItemIcon><Person /></ListItemIcon>
-            <ListItemText primary={'Perfil'} />
+            <Link to={`/profile`} activeclassname="active">Perfil</Link>
+            {/* <ListItemText primary={'Perfil'} onClick={() => window.location.href + '/profile'}/> */}
         </ListItem>
         <ListItem disabled>
             <ListItemIcon><AttachMoney /></ListItemIcon>
@@ -100,10 +107,20 @@ function Wrapper(props) {
     </div>
   );
 
+  const switchTheme = props => (
+        (props.location.pathname === '/profile')?
+        <React.Fragment>
+            <DadosPerfil/>
+        </React.Fragment> :
+        <React.Fragment>
+            <Dream/>
+            <TimeLine/>
+        </React.Fragment>
+)
 
+  console.log(props);
   return (
     <div>
-        
         <div className="align-components_navbar">
             <HideOnScroll {...props}>
                 <Button onClick={toggleDrawer('left', true)}
@@ -112,7 +129,7 @@ function Wrapper(props) {
                     width: '100%',
                     color: 'white',
                     backgroundColor: '#3e51b5',
-                    'z-index': '1101',
+                    zIndex: 1101,
                     borderRadius: 0,
                     display: 'flex',
                     justifyContent:'flex-start',
@@ -120,19 +137,9 @@ function Wrapper(props) {
                 }}> &#9776; </Button>
             </HideOnScroll>
         </div>
-        <div class="home-content">
-            <Container maxWidth="sm">
-                {/* <Dream/>
-                <TimeLine/> */}
-                <DadosPerfil/>
-            </Container>
-        </div>
-        <div class="perfil-content" style={{display: 'none'}}>
-            <Container maxWidth="sm">
-                {/* <Dream/> */}
-                {/* <TimeLine/> */}
-            </Container>
-        </div>
+        <Container maxWidth="md">
+        {switchTheme(props)}
+        </Container>
         <SwipeableDrawer
         open={state.left}
         disableSwipeToOpen={false}

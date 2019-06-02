@@ -25,7 +25,8 @@ const Routes = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Login}/>
-            <PrivateRoute path="/app" component={Wrapper}/>
+            <PrivateRoute path="/app" component={Wrapper} tela={true}/>
+            <PrivateRoute path="/profile" component={Wrapper} tela={false}/>
         </Switch>
     </BrowserRouter>
 );

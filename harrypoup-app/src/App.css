@@ -45,3 +45,23 @@
 .MuiPaper-elevation4{
   box-shadow: none!important;
 }
+.button-back{
+  height: 50px;
+  width: 50px;
+  background-color: #3e51b5;
+  color: white;
+  text-align: center;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1110;
+  box-shadow: 5px 1px 4px #b3b3b3;
+}
+
+.dnone{
+  display: none;
+}

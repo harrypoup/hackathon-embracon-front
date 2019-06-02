@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -12,6 +13,8 @@ import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
 import WorkIcon from '@material-ui/icons/Work';
 import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+import ArrowBack from '@material-ui/icons/ArrowBack';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -73,9 +76,16 @@ function DadosPerfil() {
 
   return (
     <Container maxWidth="sm" style={{paddingTop: 50}}>
-        <Typography variant="h5" gutterBottom>
-            Dados Cadastrais
-        </Typography>
+        <Link to={`/app`} activeclassname="active">
+            <div className="button-back">
+                <ArrowBack/>
+            </div>
+        </Link>
+        <Grid xs={12} md={12}>
+            <Typography variant="h5" gutterBottom>
+                Dados Cadastrais
+            </Typography>
+        </Grid>
         <form className={classes.container} noValidate autoComplete="off">
         <TextField
             id="standard-name"
@@ -105,9 +115,11 @@ function DadosPerfil() {
             disabled
         />
         <Divider variant="middle"/>
-        <Typography variant="h5" gutterBottom style={{paddingTop: 50, paddingBottom: 30}}>
-            Informações Econômicas
-        </Typography>
+            <Grid xs={12} md={12}>
+                <Typography variant="h5" gutterBottom style={{paddingTop: 50, paddingBottom: 30}}>
+                    Informações Econômicas
+                </Typography>
+            </Grid>
         <TextField
             id="standard-name"
             label="Renda Mensal"
@@ -117,9 +129,11 @@ function DadosPerfil() {
             margin="normal"
             disabled
         />
+        <Grid xs={12} md={12}>
         <Typography variant="h6" gutterBottom style={{paddingTop: 30, paddingBottom: 5}}>
             Gastos Mensais
-        </Typography>
+            </Typography>
+        </Grid>
         <List className={classes.root}>
             <ListItem>
                 <ListItemAvatar>
@@ -149,9 +163,12 @@ function DadosPerfil() {
         <Typography variant="h6" gutterBottom style={{paddingTop: 30, paddingBottom: 5}}>
             Renda Mensal - Gastos = <strong>R$ 2.010,00</strong>
         </Typography>
-        <Typography variant="h5" gutterBottom style={{paddingTop: 50, paddingBottom: 30}}>
-            Consórcio
-        </Typography>
+        <Divider/>
+        <Grid xs={12} md={12}>
+            <Typography variant="h5" gutterBottom style={{paddingTop: 50, paddingBottom: 30}}>
+                Consórcio
+            </Typography>
+        </Grid>
         <TextField
             id="standard-consorciodesc"
             label="Descricao do consórcio"
