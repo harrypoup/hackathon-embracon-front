@@ -45,6 +45,13 @@
     margin: 0 auto;
   }
 
+  .sidenav-menu{
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
   .sidenav-name{
     padding-top: 10px;
     text-align: center;
@@ -53,16 +60,28 @@
     font-size: 26px;
   }
 
-  .sidenav-certificates{
+  .sidenav-item_muted{
+    font-size: 12px;
+  }
 
+  .sidenav-certificates{
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .item-certificates{
-    width: 15px;
-    height: 15px;
+    width: 45px;
+    height: 45px;
     background-color: gray;
+    border-radius: 100%;
   }
 
   .slick-dots{
     display: none!important;
+  }
+
+  .not-consorcio:disabled{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
   }
