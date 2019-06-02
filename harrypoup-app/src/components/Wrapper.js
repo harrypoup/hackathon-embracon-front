@@ -16,6 +16,7 @@ import Person from '@material-ui/icons/Person';
 import AttachMoney from '@material-ui/icons/AttachMoney';
 import Help from '@material-ui/icons/Help';
 import ExitToApp from '@material-ui/icons/ExitToApp';
+import Home from '@material-ui/icons/Home';
 
 import {Link} from 'react-router-dom';
 
@@ -28,6 +29,7 @@ import Dream from './Dream';
 import TimeLine from './TimeLine';
 import AvatarWrapper from './AvatarWrapper';
 import DadosPerfil from './DadosPerfil';
+import CentralAjuda from './CentralAjuda';
 
 
 const useStyles = makeStyles({
@@ -85,6 +87,12 @@ function Wrapper(props) {
     >
     <AvatarWrapper/>
       <List>
+        <Link to={`/app`} activeclassname="active">
+            <ListItem button key={() => Math.random()}>
+                <ListItemIcon><Home /></ListItemIcon>
+                <ListItemText primary={'Início'} />
+            </ListItem>
+        </Link>
         <Link to={`/profile`} activeclassname="active">
             <ListItem button key={() => Math.random()}>
                 <ListItemIcon><Person /></ListItemIcon>
@@ -98,12 +106,16 @@ function Wrapper(props) {
         </List>
       <Divider />
       <List>
-        {['Central de ajuda', 'Sair'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <Help /> : <ExitToApp disabled/>}</ListItemIcon>
-            <ListItemText primary={text} />
+        <Link to={`/help`} activeclassname="active">
+          <ListItem>
+            <ListItemIcon><Help /></ListItemIcon>
+            <ListItemText primary={'Central de ajuda'}></ListItemText>
           </ListItem>
-        ))}
+        </Link>
+        <ListItem>
+            <ListItemIcon><ExitToApp /></ListItemIcon>
+            <ListItemText primary={'Sair'}></ListItemText>
+        </ListItem>
       </List>
     </div>
   );
@@ -112,10 +124,13 @@ function Wrapper(props) {
         (props.location.pathname === '/profile')?
         <React.Fragment>
             <DadosPerfil/>
-        </React.Fragment> :
+        </React.Fragment> : (props.location.pathname === '/app') ?
         <React.Fragment>
             <Dream/>
             <TimeLine/>
+        </React.Fragment> :
+        <React.Fragment>
+            <CentralAjuda/>
         </React.Fragment>
 )
 
