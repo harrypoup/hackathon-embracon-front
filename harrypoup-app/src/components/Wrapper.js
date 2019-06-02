@@ -85,11 +85,12 @@ function Wrapper(props) {
     >
     <AvatarWrapper/>
       <List>
-        <ListItem button key={() => Math.random()}>
-            <ListItemIcon><Person /></ListItemIcon>
-            <Link to={`/profile`} activeclassname="active">Perfil</Link>
-            {/* <ListItemText primary={'Perfil'} onClick={() => window.location.href + '/profile'}/> */}
-        </ListItem>
+        <Link to={`/profile`} activeclassname="active">
+            <ListItem button key={() => Math.random()}>
+                <ListItemIcon><Person /></ListItemIcon>
+                <ListItemText primary={'Perfil'} />
+            </ListItem>
+        </Link>
         <ListItem disabled>
             <ListItemIcon><AttachMoney /></ListItemIcon>
             <ListItemText primary={'Consórcio especial'} />
