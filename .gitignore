@@ -1,1 +1,3 @@
-./harrypoup/vendor
+node_modules
+
+build
